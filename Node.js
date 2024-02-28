@@ -65,7 +65,7 @@ var DoublyLinkedList = /** @class */ (function () {
                         currentNode.next.prev = currentNode.prev;
                 }
                 this.length--;
-                break; // Добавлено прерывание цикла после удаления узла
+                break;
             }
             currentNode = currentNode.next;
         }
@@ -98,7 +98,7 @@ var DoublyLinkedList = /** @class */ (function () {
     };
     return DoublyLinkedList;
 }());
-// Пример использования:
+
 var linkedList = new DoublyLinkedList();
 linkedList.append(1);
 linkedList.append(2);

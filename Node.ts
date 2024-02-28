@@ -1,18 +1,18 @@
-class ListNode {
-    data: any;
-    prev: ListNode | null;
-    next: ListNode | null;
+class ListNode<T> {
+    data: T;
+    prev: ListNode<T> | null;
+    next: ListNode<T> | null;
 
-    constructor(data: any) {
+    constructor(data: T) {
         this.data = data;
         this.prev = null;
         this.next = null;
     }
 }
 
-class DoublyLinkedList {
-    head: ListNode | null;
-    tail: ListNode | null;
+class DoublyLinkedList<T> {
+    head: ListNode<T> | null;
+    tail: ListNode<T> | null;
     length: number;
 
     constructor() {
@@ -21,8 +21,8 @@ class DoublyLinkedList {
         this.length = 0;
     }
 
-    append(data: any): void {
-        const newNode = new ListNode(data);
+    append(data: T): void {
+        const newNode = new ListNode<T>(data);
         if (this.head === null) {
             this.head = newNode;
             this.tail = newNode;
@@ -34,8 +34,8 @@ class DoublyLinkedList {
         this.length++;
     }
 
-    prepend(data: any): void {
-        const newNode = new ListNode(data);
+    prepend(data: T): void {
+        const newNode = new ListNode<T>(data);
         if (this.head === null) {
             this.head = newNode;
             this.tail = newNode;
@@ -47,7 +47,7 @@ class DoublyLinkedList {
         this.length++;
     }
 
-    remove(data: any): void {
+    remove(data: T): void {
         let currentNode = this.head;
         while (currentNode) {
             if (currentNode.data === data) {
@@ -65,13 +65,13 @@ class DoublyLinkedList {
                     if (currentNode.next) currentNode.next.prev = currentNode.prev;
                 }
                 this.length--;
-                break; // Добавлено прерывание цикла после удаления узла
+                break;
             }
             currentNode = currentNode.next;
         }
     }
 
-    find(data: any): ListNode | null {
+    find(data: T): ListNode<T> | null {
         let currentNode = this.head;
         while (currentNode) {
             if (currentNode.data === data) {
@@ -82,7 +82,7 @@ class DoublyLinkedList {
         return null;
     }
 
-    update(index: number, newData: any): boolean {
+    update(index: number, newData: T): boolean {
         if (index < 0 || index >= this.length) {
             return false;
         }
@@ -100,7 +100,7 @@ class DoublyLinkedList {
 }
 
 // Пример использования:
-const linkedList = new DoublyLinkedList();
+const linkedList = new DoublyLinkedList<number>();
 linkedList.append(1);
 linkedList.append(2);
 linkedList.prepend(0);
